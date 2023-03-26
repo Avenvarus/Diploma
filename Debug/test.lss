@@ -3,31 +3,31 @@ test.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         000000c0  00800100  00001a28  00001abc  2**0
+  0 .data         00000096  00800100  00001a28  00001abc  2**0
                   CONTENTS, ALLOC, LOAD, DATA
   1 .text         00001a28  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000035  008001c0  008001c0  00001b7c  2**0
+  2 .bss          00000035  00800196  00800196  00001b52  2**0
                   ALLOC
-  3 .comment      0000005c  00000000  00000000  00001b7c  2**0
+  3 .comment      0000005c  00000000  00000000  00001b52  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00001bd8  2**2
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00001bb0  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000118  00000000  00000000  00001c18  2**0
+  5 .debug_aranges 00000110  00000000  00000000  00001bf0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   000017ae  00000000  00000000  00001d30  2**0
+  6 .debug_info   00001668  00000000  00000000  00001d00  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000b16  00000000  00000000  000034de  2**0
+  7 .debug_abbrev 00000b16  00000000  00000000  00003368  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000a51  00000000  00000000  00003ff4  2**0
+  8 .debug_line   000009fd  00000000  00000000  00003e7e  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  0000030c  00000000  00000000  00004a48  2**2
+  9 .debug_frame  000002cc  00000000  00000000  0000487c  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000594  00000000  00000000  00004d54  2**0
+ 10 .debug_str    000005c9  00000000  00000000  00004b48  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000805  00000000  00000000  000052e8  2**0
+ 11 .debug_loc    00000770  00000000  00000000  00005111  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000d8  00000000  00000000  00005aed  2**0
+ 12 .debug_ranges 000000d0  00000000  00000000  00005881  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -227,13 +227,13 @@ Disassembly of section .text:
      1a6:	02 c0       	rjmp	.+4      	; 0x1ac <__do_copy_data+0x10>
      1a8:	05 90       	lpm	r0, Z+
      1aa:	0d 92       	st	X+, r0
-     1ac:	a0 3c       	cpi	r26, 0xC0	; 192
+     1ac:	a6 39       	cpi	r26, 0x96	; 150
      1ae:	b1 07       	cpc	r27, r17
      1b0:	d9 f7       	brne	.-10     	; 0x1a8 <__do_copy_data+0xc>
 
 000001b2 <__do_clear_bss>:
      1b2:	21 e0       	ldi	r18, 0x01	; 1
-     1b4:	a0 ec       	ldi	r26, 0xC0	; 192
+     1b4:	a6 e9       	ldi	r26, 0x96	; 150
      1b6:	b1 e0       	ldi	r27, 0x01	; 1
      1b8:	01 c0       	rjmp	.+2      	; 0x1bc <.do_clear_bss_start>
 
@@ -241,7 +241,7 @@ Disassembly of section .text:
      1ba:	1d 92       	st	X+, r1
 
 000001bc <.do_clear_bss_start>:
-     1bc:	a5 3f       	cpi	r26, 0xF5	; 245
+     1bc:	ab 3c       	cpi	r26, 0xCB	; 203
      1be:	b2 07       	cpc	r27, r18
      1c0:	e1 f7       	brne	.-8      	; 0x1ba <.do_clear_bss_loop>
      1c2:	0e 94 e0 03 	call	0x7c0	; 0x7c0 <main>
@@ -280,10 +280,10 @@ void ReadRawValue(void)
      1fa:	40 e8       	ldi	r20, 0x80	; 128
      1fc:	58 e3       	ldi	r21, 0x38	; 56
      1fe:	0e 94 65 07 	call	0xeca	; 0xeca <__mulsf3>
-     202:	60 93 f1 01 	sts	0x01F1, r22	; 0x8001f1 <Xa>
-     206:	70 93 f2 01 	sts	0x01F2, r23	; 0x8001f2 <Xa+0x1>
-     20a:	80 93 f3 01 	sts	0x01F3, r24	; 0x8001f3 <Xa+0x2>
-     20e:	90 93 f4 01 	sts	0x01F4, r25	; 0x8001f4 <Xa+0x3>
+     202:	60 93 c7 01 	sts	0x01C7, r22	; 0x8001c7 <Xa>
+     206:	70 93 c8 01 	sts	0x01C8, r23	; 0x8001c8 <Xa+0x1>
+     20a:	80 93 c9 01 	sts	0x01C9, r24	; 0x8001c9 <Xa+0x2>
+     20e:	90 93 ca 01 	sts	0x01CA, r25	; 0x8001ca <Xa+0x3>
 	Ya = (((int)RecieveDataFromGy86(ACCEL_YOUT_H)<<8) | (int)RecieveDataFromGy86(ACCEL_YOUT_L)) / A_LSB;
      212:	8d e3       	ldi	r24, 0x3D	; 61
      214:	0e 94 ed 04 	call	0x9da	; 0x9da <RecieveDataFromGy86>
@@ -305,10 +305,10 @@ void ReadRawValue(void)
      23a:	40 e8       	ldi	r20, 0x80	; 128
      23c:	58 e3       	ldi	r21, 0x38	; 56
      23e:	0e 94 65 07 	call	0xeca	; 0xeca <__mulsf3>
-     242:	60 93 ed 01 	sts	0x01ED, r22	; 0x8001ed <Ya>
-     246:	70 93 ee 01 	sts	0x01EE, r23	; 0x8001ee <Ya+0x1>
-     24a:	80 93 ef 01 	sts	0x01EF, r24	; 0x8001ef <Ya+0x2>
-     24e:	90 93 f0 01 	sts	0x01F0, r25	; 0x8001f0 <Ya+0x3>
+     242:	60 93 c3 01 	sts	0x01C3, r22	; 0x8001c3 <Ya>
+     246:	70 93 c4 01 	sts	0x01C4, r23	; 0x8001c4 <Ya+0x1>
+     24a:	80 93 c5 01 	sts	0x01C5, r24	; 0x8001c5 <Ya+0x2>
+     24e:	90 93 c6 01 	sts	0x01C6, r25	; 0x8001c6 <Ya+0x3>
 	Za = (((int)RecieveDataFromGy86(ACCEL_ZOUT_H)<<8) | (int)RecieveDataFromGy86(ACCEL_ZOUT_L)) / A_LSB;
      252:	8f e3       	ldi	r24, 0x3F	; 63
      254:	0e 94 ed 04 	call	0x9da	; 0x9da <RecieveDataFromGy86>
@@ -330,10 +330,10 @@ void ReadRawValue(void)
      27a:	40 e8       	ldi	r20, 0x80	; 128
      27c:	58 e3       	ldi	r21, 0x38	; 56
      27e:	0e 94 65 07 	call	0xeca	; 0xeca <__mulsf3>
-     282:	60 93 e9 01 	sts	0x01E9, r22	; 0x8001e9 <Za>
-     286:	70 93 ea 01 	sts	0x01EA, r23	; 0x8001ea <Za+0x1>
-     28a:	80 93 eb 01 	sts	0x01EB, r24	; 0x8001eb <Za+0x2>
-     28e:	90 93 ec 01 	sts	0x01EC, r25	; 0x8001ec <Za+0x3>
+     282:	60 93 bf 01 	sts	0x01BF, r22	; 0x8001bf <Za>
+     286:	70 93 c0 01 	sts	0x01C0, r23	; 0x8001c0 <Za+0x1>
+     28a:	80 93 c1 01 	sts	0x01C1, r24	; 0x8001c1 <Za+0x2>
+     28e:	90 93 c2 01 	sts	0x01C2, r25	; 0x8001c2 <Za+0x3>
 	
 	Xg = (((int)RecieveDataFromGy86(GYRO_XOUT_H)<<8) | (int)RecieveDataFromGy86(GYRO_XOUT_L)) / G_LSB;
      292:	83 e4       	ldi	r24, 0x43	; 67
@@ -356,10 +356,10 @@ void ReadRawValue(void)
      2ba:	43 e8       	ldi	r20, 0x83	; 131
      2bc:	51 e4       	ldi	r21, 0x41	; 65
      2be:	0e 94 36 06 	call	0xc6c	; 0xc6c <__divsf3>
-     2c2:	60 93 e1 01 	sts	0x01E1, r22	; 0x8001e1 <Xg>
-     2c6:	70 93 e2 01 	sts	0x01E2, r23	; 0x8001e2 <Xg+0x1>
-     2ca:	80 93 e3 01 	sts	0x01E3, r24	; 0x8001e3 <Xg+0x2>
-     2ce:	90 93 e4 01 	sts	0x01E4, r25	; 0x8001e4 <Xg+0x3>
+     2c2:	60 93 b7 01 	sts	0x01B7, r22	; 0x8001b7 <Xg>
+     2c6:	70 93 b8 01 	sts	0x01B8, r23	; 0x8001b8 <Xg+0x1>
+     2ca:	80 93 b9 01 	sts	0x01B9, r24	; 0x8001b9 <Xg+0x2>
+     2ce:	90 93 ba 01 	sts	0x01BA, r25	; 0x8001ba <Xg+0x3>
 	Yg = (((int)RecieveDataFromGy86(GYRO_YOUT_H)<<8) | (int)RecieveDataFromGy86(GYRO_YOUT_L)) / G_LSB;
      2d2:	85 e4       	ldi	r24, 0x45	; 69
      2d4:	0e 94 ed 04 	call	0x9da	; 0x9da <RecieveDataFromGy86>
@@ -381,10 +381,10 @@ void ReadRawValue(void)
      2fa:	43 e8       	ldi	r20, 0x83	; 131
      2fc:	51 e4       	ldi	r21, 0x41	; 65
      2fe:	0e 94 36 06 	call	0xc6c	; 0xc6c <__divsf3>
-     302:	60 93 dd 01 	sts	0x01DD, r22	; 0x8001dd <Yg>
-     306:	70 93 de 01 	sts	0x01DE, r23	; 0x8001de <Yg+0x1>
-     30a:	80 93 df 01 	sts	0x01DF, r24	; 0x8001df <Yg+0x2>
-     30e:	90 93 e0 01 	sts	0x01E0, r25	; 0x8001e0 <Yg+0x3>
+     302:	60 93 b3 01 	sts	0x01B3, r22	; 0x8001b3 <Yg>
+     306:	70 93 b4 01 	sts	0x01B4, r23	; 0x8001b4 <Yg+0x1>
+     30a:	80 93 b5 01 	sts	0x01B5, r24	; 0x8001b5 <Yg+0x2>
+     30e:	90 93 b6 01 	sts	0x01B6, r25	; 0x8001b6 <Yg+0x3>
 	Zg = (((int)RecieveDataFromGy86(GYRO_ZOUT_H)<<8) | (int)RecieveDataFromGy86(GYRO_ZOUT_L)) / G_LSB;
      312:	87 e4       	ldi	r24, 0x47	; 71
      314:	0e 94 ed 04 	call	0x9da	; 0x9da <RecieveDataFromGy86>
@@ -406,10 +406,10 @@ void ReadRawValue(void)
      33a:	43 e8       	ldi	r20, 0x83	; 131
      33c:	51 e4       	ldi	r21, 0x41	; 65
      33e:	0e 94 36 06 	call	0xc6c	; 0xc6c <__divsf3>
-     342:	60 93 d9 01 	sts	0x01D9, r22	; 0x8001d9 <Zg>
-     346:	70 93 da 01 	sts	0x01DA, r23	; 0x8001da <Zg+0x1>
-     34a:	80 93 db 01 	sts	0x01DB, r24	; 0x8001db <Zg+0x2>
-     34e:	90 93 dc 01 	sts	0x01DC, r25	; 0x8001dc <Zg+0x3>
+     342:	60 93 af 01 	sts	0x01AF, r22	; 0x8001af <Zg>
+     346:	70 93 b0 01 	sts	0x01B0, r23	; 0x8001b0 <Zg+0x1>
+     34a:	80 93 b1 01 	sts	0x01B1, r24	; 0x8001b1 <Zg+0x2>
+     34e:	90 93 b2 01 	sts	0x01B2, r25	; 0x8001b2 <Zg+0x3>
 	
 	t = ((((int)RecieveDataFromGy86(TEMP_OUT_H)<<8) | (int)RecieveDataFromGy86(TEMP_OUT_L))/340.00)+36.53;
      352:	81 e4       	ldi	r24, 0x41	; 65
@@ -437,10 +437,10 @@ void ReadRawValue(void)
      386:	42 e1       	ldi	r20, 0x12	; 18
      388:	52 e4       	ldi	r21, 0x42	; 66
      38a:	0e 94 58 05 	call	0xab0	; 0xab0 <__addsf3>
-     38e:	60 93 e5 01 	sts	0x01E5, r22	; 0x8001e5 <t>
-     392:	70 93 e6 01 	sts	0x01E6, r23	; 0x8001e6 <t+0x1>
-     396:	80 93 e7 01 	sts	0x01E7, r24	; 0x8001e7 <t+0x2>
-     39a:	90 93 e8 01 	sts	0x01E8, r25	; 0x8001e8 <t+0x3>
+     38e:	60 93 bb 01 	sts	0x01BB, r22	; 0x8001bb <t>
+     392:	70 93 bc 01 	sts	0x01BC, r23	; 0x8001bc <t+0x1>
+     396:	80 93 bd 01 	sts	0x01BD, r24	; 0x8001bd <t+0x2>
+     39a:	90 93 be 01 	sts	0x01BE, r25	; 0x8001be <t+0x3>
 }
      39e:	df 91       	pop	r29
      3a0:	cf 91       	pop	r28
@@ -488,10 +488,10 @@ void CalculateError(void)
      3de:	43 e8       	ldi	r20, 0x83	; 131
      3e0:	51 e4       	ldi	r21, 0x41	; 65
      3e2:	0e 94 36 06 	call	0xc6c	; 0xc6c <__divsf3>
-     3e6:	60 93 e1 01 	sts	0x01E1, r22	; 0x8001e1 <Xg>
-     3ea:	70 93 e2 01 	sts	0x01E2, r23	; 0x8001e2 <Xg+0x1>
-     3ee:	80 93 e3 01 	sts	0x01E3, r24	; 0x8001e3 <Xg+0x2>
-     3f2:	90 93 e4 01 	sts	0x01E4, r25	; 0x8001e4 <Xg+0x3>
+     3e6:	60 93 b7 01 	sts	0x01B7, r22	; 0x8001b7 <Xg>
+     3ea:	70 93 b8 01 	sts	0x01B8, r23	; 0x8001b8 <Xg+0x1>
+     3ee:	80 93 b9 01 	sts	0x01B9, r24	; 0x8001b9 <Xg+0x2>
+     3f2:	90 93 ba 01 	sts	0x01BA, r25	; 0x8001ba <Xg+0x3>
 		Yg = (((int)RecieveDataFromGy86(GYRO_YOUT_H)<<8) | (int)RecieveDataFromGy86(GYRO_YOUT_L)) / G_LSB;
      3f6:	85 e4       	ldi	r24, 0x45	; 69
      3f8:	0e 94 ed 04 	call	0x9da	; 0x9da <RecieveDataFromGy86>
@@ -513,10 +513,10 @@ void CalculateError(void)
      41e:	43 e8       	ldi	r20, 0x83	; 131
      420:	51 e4       	ldi	r21, 0x41	; 65
      422:	0e 94 36 06 	call	0xc6c	; 0xc6c <__divsf3>
-     426:	60 93 dd 01 	sts	0x01DD, r22	; 0x8001dd <Yg>
-     42a:	70 93 de 01 	sts	0x01DE, r23	; 0x8001de <Yg+0x1>
-     42e:	80 93 df 01 	sts	0x01DF, r24	; 0x8001df <Yg+0x2>
-     432:	90 93 e0 01 	sts	0x01E0, r25	; 0x8001e0 <Yg+0x3>
+     426:	60 93 b3 01 	sts	0x01B3, r22	; 0x8001b3 <Yg>
+     42a:	70 93 b4 01 	sts	0x01B4, r23	; 0x8001b4 <Yg+0x1>
+     42e:	80 93 b5 01 	sts	0x01B5, r24	; 0x8001b5 <Yg+0x2>
+     432:	90 93 b6 01 	sts	0x01B6, r25	; 0x8001b6 <Yg+0x3>
 		Zg = (((int)RecieveDataFromGy86(GYRO_ZOUT_H)<<8) | (int)RecieveDataFromGy86(GYRO_ZOUT_L)) / G_LSB;
      436:	87 e4       	ldi	r24, 0x47	; 71
      438:	0e 94 ed 04 	call	0x9da	; 0x9da <RecieveDataFromGy86>
@@ -540,51 +540,51 @@ void CalculateError(void)
      462:	0e 94 36 06 	call	0xc6c	; 0xc6c <__divsf3>
      466:	6b 01       	movw	r12, r22
      468:	7c 01       	movw	r14, r24
-     46a:	60 93 d9 01 	sts	0x01D9, r22	; 0x8001d9 <Zg>
-     46e:	70 93 da 01 	sts	0x01DA, r23	; 0x8001da <Zg+0x1>
-     472:	80 93 db 01 	sts	0x01DB, r24	; 0x8001db <Zg+0x2>
-     476:	90 93 dc 01 	sts	0x01DC, r25	; 0x8001dc <Zg+0x3>
+     46a:	60 93 af 01 	sts	0x01AF, r22	; 0x8001af <Zg>
+     46e:	70 93 b0 01 	sts	0x01B0, r23	; 0x8001b0 <Zg+0x1>
+     472:	80 93 b1 01 	sts	0x01B1, r24	; 0x8001b1 <Zg+0x2>
+     476:	90 93 b2 01 	sts	0x01B2, r25	; 0x8001b2 <Zg+0x3>
 		// Sum all readings
 		GyroErrorX = GyroErrorX + Xg;
-     47a:	20 91 e1 01 	lds	r18, 0x01E1	; 0x8001e1 <Xg>
-     47e:	30 91 e2 01 	lds	r19, 0x01E2	; 0x8001e2 <Xg+0x1>
-     482:	40 91 e3 01 	lds	r20, 0x01E3	; 0x8001e3 <Xg+0x2>
-     486:	50 91 e4 01 	lds	r21, 0x01E4	; 0x8001e4 <Xg+0x3>
-     48a:	60 91 d5 01 	lds	r22, 0x01D5	; 0x8001d5 <GyroErrorX>
-     48e:	70 91 d6 01 	lds	r23, 0x01D6	; 0x8001d6 <GyroErrorX+0x1>
-     492:	80 91 d7 01 	lds	r24, 0x01D7	; 0x8001d7 <GyroErrorX+0x2>
-     496:	90 91 d8 01 	lds	r25, 0x01D8	; 0x8001d8 <GyroErrorX+0x3>
+     47a:	20 91 b7 01 	lds	r18, 0x01B7	; 0x8001b7 <Xg>
+     47e:	30 91 b8 01 	lds	r19, 0x01B8	; 0x8001b8 <Xg+0x1>
+     482:	40 91 b9 01 	lds	r20, 0x01B9	; 0x8001b9 <Xg+0x2>
+     486:	50 91 ba 01 	lds	r21, 0x01BA	; 0x8001ba <Xg+0x3>
+     48a:	60 91 ab 01 	lds	r22, 0x01AB	; 0x8001ab <GyroErrorX>
+     48e:	70 91 ac 01 	lds	r23, 0x01AC	; 0x8001ac <GyroErrorX+0x1>
+     492:	80 91 ad 01 	lds	r24, 0x01AD	; 0x8001ad <GyroErrorX+0x2>
+     496:	90 91 ae 01 	lds	r25, 0x01AE	; 0x8001ae <GyroErrorX+0x3>
      49a:	0e 94 58 05 	call	0xab0	; 0xab0 <__addsf3>
-     49e:	60 93 d5 01 	sts	0x01D5, r22	; 0x8001d5 <GyroErrorX>
-     4a2:	70 93 d6 01 	sts	0x01D6, r23	; 0x8001d6 <GyroErrorX+0x1>
-     4a6:	80 93 d7 01 	sts	0x01D7, r24	; 0x8001d7 <GyroErrorX+0x2>
-     4aa:	90 93 d8 01 	sts	0x01D8, r25	; 0x8001d8 <GyroErrorX+0x3>
+     49e:	60 93 ab 01 	sts	0x01AB, r22	; 0x8001ab <GyroErrorX>
+     4a2:	70 93 ac 01 	sts	0x01AC, r23	; 0x8001ac <GyroErrorX+0x1>
+     4a6:	80 93 ad 01 	sts	0x01AD, r24	; 0x8001ad <GyroErrorX+0x2>
+     4aa:	90 93 ae 01 	sts	0x01AE, r25	; 0x8001ae <GyroErrorX+0x3>
 		GyroErrorY = GyroErrorY + Yg;
-     4ae:	20 91 dd 01 	lds	r18, 0x01DD	; 0x8001dd <Yg>
-     4b2:	30 91 de 01 	lds	r19, 0x01DE	; 0x8001de <Yg+0x1>
-     4b6:	40 91 df 01 	lds	r20, 0x01DF	; 0x8001df <Yg+0x2>
-     4ba:	50 91 e0 01 	lds	r21, 0x01E0	; 0x8001e0 <Yg+0x3>
-     4be:	60 91 d1 01 	lds	r22, 0x01D1	; 0x8001d1 <GyroErrorY>
-     4c2:	70 91 d2 01 	lds	r23, 0x01D2	; 0x8001d2 <GyroErrorY+0x1>
-     4c6:	80 91 d3 01 	lds	r24, 0x01D3	; 0x8001d3 <GyroErrorY+0x2>
-     4ca:	90 91 d4 01 	lds	r25, 0x01D4	; 0x8001d4 <GyroErrorY+0x3>
+     4ae:	20 91 b3 01 	lds	r18, 0x01B3	; 0x8001b3 <Yg>
+     4b2:	30 91 b4 01 	lds	r19, 0x01B4	; 0x8001b4 <Yg+0x1>
+     4b6:	40 91 b5 01 	lds	r20, 0x01B5	; 0x8001b5 <Yg+0x2>
+     4ba:	50 91 b6 01 	lds	r21, 0x01B6	; 0x8001b6 <Yg+0x3>
+     4be:	60 91 a7 01 	lds	r22, 0x01A7	; 0x8001a7 <GyroErrorY>
+     4c2:	70 91 a8 01 	lds	r23, 0x01A8	; 0x8001a8 <GyroErrorY+0x1>
+     4c6:	80 91 a9 01 	lds	r24, 0x01A9	; 0x8001a9 <GyroErrorY+0x2>
+     4ca:	90 91 aa 01 	lds	r25, 0x01AA	; 0x8001aa <GyroErrorY+0x3>
      4ce:	0e 94 58 05 	call	0xab0	; 0xab0 <__addsf3>
-     4d2:	60 93 d1 01 	sts	0x01D1, r22	; 0x8001d1 <GyroErrorY>
-     4d6:	70 93 d2 01 	sts	0x01D2, r23	; 0x8001d2 <GyroErrorY+0x1>
-     4da:	80 93 d3 01 	sts	0x01D3, r24	; 0x8001d3 <GyroErrorY+0x2>
-     4de:	90 93 d4 01 	sts	0x01D4, r25	; 0x8001d4 <GyroErrorY+0x3>
+     4d2:	60 93 a7 01 	sts	0x01A7, r22	; 0x8001a7 <GyroErrorY>
+     4d6:	70 93 a8 01 	sts	0x01A8, r23	; 0x8001a8 <GyroErrorY+0x1>
+     4da:	80 93 a9 01 	sts	0x01A9, r24	; 0x8001a9 <GyroErrorY+0x2>
+     4de:	90 93 aa 01 	sts	0x01AA, r25	; 0x8001aa <GyroErrorY+0x3>
 		GyroErrorZ = GyroErrorZ + Zg;
-     4e2:	20 91 cd 01 	lds	r18, 0x01CD	; 0x8001cd <GyroErrorZ>
-     4e6:	30 91 ce 01 	lds	r19, 0x01CE	; 0x8001ce <GyroErrorZ+0x1>
-     4ea:	40 91 cf 01 	lds	r20, 0x01CF	; 0x8001cf <GyroErrorZ+0x2>
-     4ee:	50 91 d0 01 	lds	r21, 0x01D0	; 0x8001d0 <GyroErrorZ+0x3>
+     4e2:	20 91 a3 01 	lds	r18, 0x01A3	; 0x8001a3 <GyroErrorZ>
+     4e6:	30 91 a4 01 	lds	r19, 0x01A4	; 0x8001a4 <GyroErrorZ+0x1>
+     4ea:	40 91 a5 01 	lds	r20, 0x01A5	; 0x8001a5 <GyroErrorZ+0x2>
+     4ee:	50 91 a6 01 	lds	r21, 0x01A6	; 0x8001a6 <GyroErrorZ+0x3>
      4f2:	c7 01       	movw	r24, r14
      4f4:	b6 01       	movw	r22, r12
      4f6:	0e 94 58 05 	call	0xab0	; 0xab0 <__addsf3>
-     4fa:	60 93 cd 01 	sts	0x01CD, r22	; 0x8001cd <GyroErrorZ>
-     4fe:	70 93 ce 01 	sts	0x01CE, r23	; 0x8001ce <GyroErrorZ+0x1>
-     502:	80 93 cf 01 	sts	0x01CF, r24	; 0x8001cf <GyroErrorZ+0x2>
-     506:	90 93 d0 01 	sts	0x01D0, r25	; 0x8001d0 <GyroErrorZ+0x3>
+     4fa:	60 93 a3 01 	sts	0x01A3, r22	; 0x8001a3 <GyroErrorZ>
+     4fe:	70 93 a4 01 	sts	0x01A4, r23	; 0x8001a4 <GyroErrorZ+0x1>
+     502:	80 93 a5 01 	sts	0x01A5, r24	; 0x8001a5 <GyroErrorZ+0x2>
+     506:	90 93 a6 01 	sts	0x01A6, r25	; 0x8001a6 <GyroErrorZ+0x3>
 		c++;
      50a:	1f 5f       	subi	r17, 0xFF	; 255
 	// From here we will get the error values used in the above equations printed on the Monitor.
@@ -606,43 +606,43 @@ void CalculateError(void)
      514:	30 e0       	ldi	r19, 0x00	; 0
      516:	48 e4       	ldi	r20, 0x48	; 72
      518:	53 e4       	ldi	r21, 0x43	; 67
-     51a:	60 91 d5 01 	lds	r22, 0x01D5	; 0x8001d5 <GyroErrorX>
-     51e:	70 91 d6 01 	lds	r23, 0x01D6	; 0x8001d6 <GyroErrorX+0x1>
-     522:	80 91 d7 01 	lds	r24, 0x01D7	; 0x8001d7 <GyroErrorX+0x2>
-     526:	90 91 d8 01 	lds	r25, 0x01D8	; 0x8001d8 <GyroErrorX+0x3>
+     51a:	60 91 ab 01 	lds	r22, 0x01AB	; 0x8001ab <GyroErrorX>
+     51e:	70 91 ac 01 	lds	r23, 0x01AC	; 0x8001ac <GyroErrorX+0x1>
+     522:	80 91 ad 01 	lds	r24, 0x01AD	; 0x8001ad <GyroErrorX+0x2>
+     526:	90 91 ae 01 	lds	r25, 0x01AE	; 0x8001ae <GyroErrorX+0x3>
      52a:	0e 94 36 06 	call	0xc6c	; 0xc6c <__divsf3>
-     52e:	60 93 d5 01 	sts	0x01D5, r22	; 0x8001d5 <GyroErrorX>
-     532:	70 93 d6 01 	sts	0x01D6, r23	; 0x8001d6 <GyroErrorX+0x1>
-     536:	80 93 d7 01 	sts	0x01D7, r24	; 0x8001d7 <GyroErrorX+0x2>
-     53a:	90 93 d8 01 	sts	0x01D8, r25	; 0x8001d8 <GyroErrorX+0x3>
+     52e:	60 93 ab 01 	sts	0x01AB, r22	; 0x8001ab <GyroErrorX>
+     532:	70 93 ac 01 	sts	0x01AC, r23	; 0x8001ac <GyroErrorX+0x1>
+     536:	80 93 ad 01 	sts	0x01AD, r24	; 0x8001ad <GyroErrorX+0x2>
+     53a:	90 93 ae 01 	sts	0x01AE, r25	; 0x8001ae <GyroErrorX+0x3>
 	GyroErrorY = GyroErrorY / 200;
      53e:	20 e0       	ldi	r18, 0x00	; 0
      540:	30 e0       	ldi	r19, 0x00	; 0
      542:	48 e4       	ldi	r20, 0x48	; 72
      544:	53 e4       	ldi	r21, 0x43	; 67
-     546:	60 91 d1 01 	lds	r22, 0x01D1	; 0x8001d1 <GyroErrorY>
-     54a:	70 91 d2 01 	lds	r23, 0x01D2	; 0x8001d2 <GyroErrorY+0x1>
-     54e:	80 91 d3 01 	lds	r24, 0x01D3	; 0x8001d3 <GyroErrorY+0x2>
-     552:	90 91 d4 01 	lds	r25, 0x01D4	; 0x8001d4 <GyroErrorY+0x3>
+     546:	60 91 a7 01 	lds	r22, 0x01A7	; 0x8001a7 <GyroErrorY>
+     54a:	70 91 a8 01 	lds	r23, 0x01A8	; 0x8001a8 <GyroErrorY+0x1>
+     54e:	80 91 a9 01 	lds	r24, 0x01A9	; 0x8001a9 <GyroErrorY+0x2>
+     552:	90 91 aa 01 	lds	r25, 0x01AA	; 0x8001aa <GyroErrorY+0x3>
      556:	0e 94 36 06 	call	0xc6c	; 0xc6c <__divsf3>
-     55a:	60 93 d1 01 	sts	0x01D1, r22	; 0x8001d1 <GyroErrorY>
-     55e:	70 93 d2 01 	sts	0x01D2, r23	; 0x8001d2 <GyroErrorY+0x1>
-     562:	80 93 d3 01 	sts	0x01D3, r24	; 0x8001d3 <GyroErrorY+0x2>
-     566:	90 93 d4 01 	sts	0x01D4, r25	; 0x8001d4 <GyroErrorY+0x3>
+     55a:	60 93 a7 01 	sts	0x01A7, r22	; 0x8001a7 <GyroErrorY>
+     55e:	70 93 a8 01 	sts	0x01A8, r23	; 0x8001a8 <GyroErrorY+0x1>
+     562:	80 93 a9 01 	sts	0x01A9, r24	; 0x8001a9 <GyroErrorY+0x2>
+     566:	90 93 aa 01 	sts	0x01AA, r25	; 0x8001aa <GyroErrorY+0x3>
 	GyroErrorZ = GyroErrorZ / 200;
      56a:	20 e0       	ldi	r18, 0x00	; 0
      56c:	30 e0       	ldi	r19, 0x00	; 0
      56e:	48 e4       	ldi	r20, 0x48	; 72
      570:	53 e4       	ldi	r21, 0x43	; 67
-     572:	60 91 cd 01 	lds	r22, 0x01CD	; 0x8001cd <GyroErrorZ>
-     576:	70 91 ce 01 	lds	r23, 0x01CE	; 0x8001ce <GyroErrorZ+0x1>
-     57a:	80 91 cf 01 	lds	r24, 0x01CF	; 0x8001cf <GyroErrorZ+0x2>
-     57e:	90 91 d0 01 	lds	r25, 0x01D0	; 0x8001d0 <GyroErrorZ+0x3>
+     572:	60 91 a3 01 	lds	r22, 0x01A3	; 0x8001a3 <GyroErrorZ>
+     576:	70 91 a4 01 	lds	r23, 0x01A4	; 0x8001a4 <GyroErrorZ+0x1>
+     57a:	80 91 a5 01 	lds	r24, 0x01A5	; 0x8001a5 <GyroErrorZ+0x2>
+     57e:	90 91 a6 01 	lds	r25, 0x01A6	; 0x8001a6 <GyroErrorZ+0x3>
      582:	0e 94 36 06 	call	0xc6c	; 0xc6c <__divsf3>
-     586:	60 93 cd 01 	sts	0x01CD, r22	; 0x8001cd <GyroErrorZ>
-     58a:	70 93 ce 01 	sts	0x01CE, r23	; 0x8001ce <GyroErrorZ+0x1>
-     58e:	80 93 cf 01 	sts	0x01CF, r24	; 0x8001cf <GyroErrorZ+0x2>
-     592:	90 93 d0 01 	sts	0x01D0, r25	; 0x8001d0 <GyroErrorZ+0x3>
+     586:	60 93 a3 01 	sts	0x01A3, r22	; 0x8001a3 <GyroErrorZ>
+     58a:	70 93 a4 01 	sts	0x01A4, r23	; 0x8001a4 <GyroErrorZ+0x1>
+     58e:	80 93 a5 01 	sts	0x01A5, r24	; 0x8001a5 <GyroErrorZ+0x2>
+     592:	90 93 a6 01 	sts	0x01A6, r25	; 0x8001a6 <GyroErrorZ+0x3>
 }
      596:	df 91       	pop	r29
      598:	cf 91       	pop	r28
@@ -683,9 +683,9 @@ ISR(TIMER0_OVF_vect)
      5c2:	86 e0       	ldi	r24, 0x06	; 6
      5c4:	86 bd       	out	0x26, r24	; 38
 	millis++;
-     5c6:	80 91 c0 01 	lds	r24, 0x01C0	; 0x8001c0 <__data_end>
+     5c6:	80 91 96 01 	lds	r24, 0x0196	; 0x800196 <__data_end>
      5ca:	8f 5f       	subi	r24, 0xFF	; 255
-     5cc:	80 93 c0 01 	sts	0x01C0, r24	; 0x8001c0 <__data_end>
+     5cc:	80 93 96 01 	sts	0x0196, r24	; 0x800196 <__data_end>
 }
      5d0:	8f 91       	pop	r24
      5d2:	0f 90       	pop	r0
@@ -721,10 +721,10 @@ void PrintRawValues(void)
      5fe:	85 e1       	ldi	r24, 0x15	; 21
      600:	e8 0e       	add	r14, r24
      602:	f1 1c       	adc	r15, r1
-     604:	60 91 f1 01 	lds	r22, 0x01F1	; 0x8001f1 <Xa>
-     608:	70 91 f2 01 	lds	r23, 0x01F2	; 0x8001f2 <Xa+0x1>
-     60c:	80 91 f3 01 	lds	r24, 0x01F3	; 0x8001f3 <Xa+0x2>
-     610:	90 91 f4 01 	lds	r25, 0x01F4	; 0x8001f4 <Xa+0x3>
+     604:	60 91 c7 01 	lds	r22, 0x01C7	; 0x8001c7 <Xa>
+     608:	70 91 c8 01 	lds	r23, 0x01C8	; 0x8001c8 <Xa+0x1>
+     60c:	80 91 c9 01 	lds	r24, 0x01C9	; 0x8001c9 <Xa+0x2>
+     610:	90 91 ca 01 	lds	r25, 0x01CA	; 0x8001ca <Xa+0x3>
      614:	87 01       	movw	r16, r14
      616:	22 e0       	ldi	r18, 0x02	; 2
      618:	30 e0       	ldi	r19, 0x00	; 0
@@ -749,10 +749,10 @@ void PrintRawValues(void)
      63e:	0e 94 2e 05 	call	0xa5c	; 0xa5c <UartSendString>
 	
 	dtostrf( Ya, 3, 2, float_ );
-     642:	60 91 ed 01 	lds	r22, 0x01ED	; 0x8001ed <Ya>
-     646:	70 91 ee 01 	lds	r23, 0x01EE	; 0x8001ee <Ya+0x1>
-     64a:	80 91 ef 01 	lds	r24, 0x01EF	; 0x8001ef <Ya+0x2>
-     64e:	90 91 f0 01 	lds	r25, 0x01F0	; 0x8001f0 <Ya+0x3>
+     642:	60 91 c3 01 	lds	r22, 0x01C3	; 0x8001c3 <Ya>
+     646:	70 91 c4 01 	lds	r23, 0x01C4	; 0x8001c4 <Ya+0x1>
+     64a:	80 91 c5 01 	lds	r24, 0x01C5	; 0x8001c5 <Ya+0x2>
+     64e:	90 91 c6 01 	lds	r25, 0x01C6	; 0x8001c6 <Ya+0x3>
      652:	22 e0       	ldi	r18, 0x02	; 2
      654:	30 e0       	ldi	r19, 0x00	; 0
      656:	43 e0       	ldi	r20, 0x03	; 3
@@ -773,10 +773,10 @@ void PrintRawValues(void)
      674:	0e 94 2e 05 	call	0xa5c	; 0xa5c <UartSendString>
 	
 	dtostrf( Za, 3, 2, float_ );
-     678:	60 91 e9 01 	lds	r22, 0x01E9	; 0x8001e9 <Za>
-     67c:	70 91 ea 01 	lds	r23, 0x01EA	; 0x8001ea <Za+0x1>
-     680:	80 91 eb 01 	lds	r24, 0x01EB	; 0x8001eb <Za+0x2>
-     684:	90 91 ec 01 	lds	r25, 0x01EC	; 0x8001ec <Za+0x3>
+     678:	60 91 bf 01 	lds	r22, 0x01BF	; 0x8001bf <Za>
+     67c:	70 91 c0 01 	lds	r23, 0x01C0	; 0x8001c0 <Za+0x1>
+     680:	80 91 c1 01 	lds	r24, 0x01C1	; 0x8001c1 <Za+0x2>
+     684:	90 91 c2 01 	lds	r25, 0x01C2	; 0x8001c2 <Za+0x3>
      688:	22 e0       	ldi	r18, 0x02	; 2
      68a:	30 e0       	ldi	r19, 0x00	; 0
      68c:	43 e0       	ldi	r20, 0x03	; 3
@@ -797,10 +797,10 @@ void PrintRawValues(void)
      6aa:	0e 94 2e 05 	call	0xa5c	; 0xa5c <UartSendString>
 	
 	dtostrf( t, 3, 2, float_ );
-     6ae:	60 91 e5 01 	lds	r22, 0x01E5	; 0x8001e5 <t>
-     6b2:	70 91 e6 01 	lds	r23, 0x01E6	; 0x8001e6 <t+0x1>
-     6b6:	80 91 e7 01 	lds	r24, 0x01E7	; 0x8001e7 <t+0x2>
-     6ba:	90 91 e8 01 	lds	r25, 0x01E8	; 0x8001e8 <t+0x3>
+     6ae:	60 91 bb 01 	lds	r22, 0x01BB	; 0x8001bb <t>
+     6b2:	70 91 bc 01 	lds	r23, 0x01BC	; 0x8001bc <t+0x1>
+     6b6:	80 91 bd 01 	lds	r24, 0x01BD	; 0x8001bd <t+0x2>
+     6ba:	90 91 be 01 	lds	r25, 0x01BE	; 0x8001be <t+0x3>
      6be:	22 e0       	ldi	r18, 0x02	; 2
      6c0:	30 e0       	ldi	r19, 0x00	; 0
      6c2:	43 e0       	ldi	r20, 0x03	; 3
@@ -822,10 +822,10 @@ void PrintRawValues(void)
      6e0:	0e 94 2e 05 	call	0xa5c	; 0xa5c <UartSendString>
 	
 	dtostrf( Xg, 3, 2, float_ );
-     6e4:	60 91 e1 01 	lds	r22, 0x01E1	; 0x8001e1 <Xg>
-     6e8:	70 91 e2 01 	lds	r23, 0x01E2	; 0x8001e2 <Xg+0x1>
-     6ec:	80 91 e3 01 	lds	r24, 0x01E3	; 0x8001e3 <Xg+0x2>
-     6f0:	90 91 e4 01 	lds	r25, 0x01E4	; 0x8001e4 <Xg+0x3>
+     6e4:	60 91 b7 01 	lds	r22, 0x01B7	; 0x8001b7 <Xg>
+     6e8:	70 91 b8 01 	lds	r23, 0x01B8	; 0x8001b8 <Xg+0x1>
+     6ec:	80 91 b9 01 	lds	r24, 0x01B9	; 0x8001b9 <Xg+0x2>
+     6f0:	90 91 ba 01 	lds	r25, 0x01BA	; 0x8001ba <Xg+0x3>
      6f4:	22 e0       	ldi	r18, 0x02	; 2
      6f6:	30 e0       	ldi	r19, 0x00	; 0
      6f8:	43 e0       	ldi	r20, 0x03	; 3
@@ -846,10 +846,10 @@ void PrintRawValues(void)
      716:	0e 94 2e 05 	call	0xa5c	; 0xa5c <UartSendString>
 	
 	dtostrf( Yg, 3, 2, float_ );
-     71a:	60 91 dd 01 	lds	r22, 0x01DD	; 0x8001dd <Yg>
-     71e:	70 91 de 01 	lds	r23, 0x01DE	; 0x8001de <Yg+0x1>
-     722:	80 91 df 01 	lds	r24, 0x01DF	; 0x8001df <Yg+0x2>
-     726:	90 91 e0 01 	lds	r25, 0x01E0	; 0x8001e0 <Yg+0x3>
+     71a:	60 91 b3 01 	lds	r22, 0x01B3	; 0x8001b3 <Yg>
+     71e:	70 91 b4 01 	lds	r23, 0x01B4	; 0x8001b4 <Yg+0x1>
+     722:	80 91 b5 01 	lds	r24, 0x01B5	; 0x8001b5 <Yg+0x2>
+     726:	90 91 b6 01 	lds	r25, 0x01B6	; 0x8001b6 <Yg+0x3>
      72a:	22 e0       	ldi	r18, 0x02	; 2
      72c:	30 e0       	ldi	r19, 0x00	; 0
      72e:	43 e0       	ldi	r20, 0x03	; 3
@@ -875,10 +875,10 @@ void PrintRawValues(void)
      756:	0e 94 2e 05 	call	0xa5c	; 0xa5c <UartSendString>
 	
 	dtostrf( Zg, 3, 2, float_ );
-     75a:	60 91 d9 01 	lds	r22, 0x01D9	; 0x8001d9 <Zg>
-     75e:	70 91 da 01 	lds	r23, 0x01DA	; 0x8001da <Zg+0x1>
-     762:	80 91 db 01 	lds	r24, 0x01DB	; 0x8001db <Zg+0x2>
-     766:	90 91 dc 01 	lds	r25, 0x01DC	; 0x8001dc <Zg+0x3>
+     75a:	60 91 af 01 	lds	r22, 0x01AF	; 0x8001af <Zg>
+     75e:	70 91 b0 01 	lds	r23, 0x01B0	; 0x8001b0 <Zg+0x1>
+     762:	80 91 b1 01 	lds	r24, 0x01B1	; 0x8001b1 <Zg+0x2>
+     766:	90 91 b2 01 	lds	r25, 0x01B2	; 0x8001b2 <Zg+0x3>
      76a:	22 e0       	ldi	r18, 0x02	; 2
      76c:	30 e0       	ldi	r19, 0x00	; 0
      76e:	43 e0       	ldi	r20, 0x03	; 3
@@ -965,20 +965,20 @@ int main (void)
 		ReadRawValue();
      7e8:	0e 94 e7 00 	call	0x1ce	; 0x1ce <ReadRawValue>
 		if (millis >= 11)
-     7ec:	c0 91 c0 01 	lds	r28, 0x01C0	; 0x8001c0 <__data_end>
+     7ec:	c0 91 96 01 	lds	r28, 0x0196	; 0x800196 <__data_end>
      7f0:	cb 30       	cpi	r28, 0x0B	; 11
      7f2:	d0 f3       	brcs	.-12     	; 0x7e8 <main+0x28>
 		{
 			// Calculating Roll and Pitch from the accelerometer data
 			accAngle = (atan2f(Xa, Ya)) * RAD_TO_DEG;
-     7f4:	20 91 ed 01 	lds	r18, 0x01ED	; 0x8001ed <Ya>
-     7f8:	30 91 ee 01 	lds	r19, 0x01EE	; 0x8001ee <Ya+0x1>
-     7fc:	40 91 ef 01 	lds	r20, 0x01EF	; 0x8001ef <Ya+0x2>
-     800:	50 91 f0 01 	lds	r21, 0x01F0	; 0x8001f0 <Ya+0x3>
-     804:	60 91 f1 01 	lds	r22, 0x01F1	; 0x8001f1 <Xa>
-     808:	70 91 f2 01 	lds	r23, 0x01F2	; 0x8001f2 <Xa+0x1>
-     80c:	80 91 f3 01 	lds	r24, 0x01F3	; 0x8001f3 <Xa+0x2>
-     810:	90 91 f4 01 	lds	r25, 0x01F4	; 0x8001f4 <Xa+0x3>
+     7f4:	20 91 c3 01 	lds	r18, 0x01C3	; 0x8001c3 <Ya>
+     7f8:	30 91 c4 01 	lds	r19, 0x01C4	; 0x8001c4 <Ya+0x1>
+     7fc:	40 91 c5 01 	lds	r20, 0x01C5	; 0x8001c5 <Ya+0x2>
+     800:	50 91 c6 01 	lds	r21, 0x01C6	; 0x8001c6 <Ya+0x3>
+     804:	60 91 c7 01 	lds	r22, 0x01C7	; 0x8001c7 <Xa>
+     808:	70 91 c8 01 	lds	r23, 0x01C8	; 0x8001c8 <Xa+0x1>
+     80c:	80 91 c9 01 	lds	r24, 0x01C9	; 0x8001c9 <Xa+0x2>
+     810:	90 91 ca 01 	lds	r25, 0x01CA	; 0x8001ca <Xa+0x3>
      814:	0e 94 d7 05 	call	0xbae	; 0xbae <atan2>
      818:	21 ee       	ldi	r18, 0xE1	; 225
      81a:	3e e2       	ldi	r19, 0x2E	; 46
@@ -987,55 +987,55 @@ int main (void)
      820:	0e 94 65 07 	call	0xeca	; 0xeca <__mulsf3>
      824:	6b 01       	movw	r12, r22
      826:	7c 01       	movw	r14, r24
-     828:	60 93 c9 01 	sts	0x01C9, r22	; 0x8001c9 <accAngle>
-     82c:	70 93 ca 01 	sts	0x01CA, r23	; 0x8001ca <accAngle+0x1>
-     830:	80 93 cb 01 	sts	0x01CB, r24	; 0x8001cb <accAngle+0x2>
-     834:	90 93 cc 01 	sts	0x01CC, r25	; 0x8001cc <accAngle+0x3>
+     828:	60 93 9f 01 	sts	0x019F, r22	; 0x80019f <accAngle>
+     82c:	70 93 a0 01 	sts	0x01A0, r23	; 0x8001a0 <accAngle+0x1>
+     830:	80 93 a1 01 	sts	0x01A1, r24	; 0x8001a1 <accAngle+0x2>
+     834:	90 93 a2 01 	sts	0x01A2, r25	; 0x8001a2 <accAngle+0x3>
 			// Correct the outputs with the calculated error values
 			Xg = Xg - GyroErrorX;
-     838:	20 91 d5 01 	lds	r18, 0x01D5	; 0x8001d5 <GyroErrorX>
-     83c:	30 91 d6 01 	lds	r19, 0x01D6	; 0x8001d6 <GyroErrorX+0x1>
-     840:	40 91 d7 01 	lds	r20, 0x01D7	; 0x8001d7 <GyroErrorX+0x2>
-     844:	50 91 d8 01 	lds	r21, 0x01D8	; 0x8001d8 <GyroErrorX+0x3>
-     848:	60 91 e1 01 	lds	r22, 0x01E1	; 0x8001e1 <Xg>
-     84c:	70 91 e2 01 	lds	r23, 0x01E2	; 0x8001e2 <Xg+0x1>
-     850:	80 91 e3 01 	lds	r24, 0x01E3	; 0x8001e3 <Xg+0x2>
-     854:	90 91 e4 01 	lds	r25, 0x01E4	; 0x8001e4 <Xg+0x3>
+     838:	20 91 ab 01 	lds	r18, 0x01AB	; 0x8001ab <GyroErrorX>
+     83c:	30 91 ac 01 	lds	r19, 0x01AC	; 0x8001ac <GyroErrorX+0x1>
+     840:	40 91 ad 01 	lds	r20, 0x01AD	; 0x8001ad <GyroErrorX+0x2>
+     844:	50 91 ae 01 	lds	r21, 0x01AE	; 0x8001ae <GyroErrorX+0x3>
+     848:	60 91 b7 01 	lds	r22, 0x01B7	; 0x8001b7 <Xg>
+     84c:	70 91 b8 01 	lds	r23, 0x01B8	; 0x8001b8 <Xg+0x1>
+     850:	80 91 b9 01 	lds	r24, 0x01B9	; 0x8001b9 <Xg+0x2>
+     854:	90 91 ba 01 	lds	r25, 0x01BA	; 0x8001ba <Xg+0x3>
      858:	0e 94 57 05 	call	0xaae	; 0xaae <__subsf3>
-     85c:	60 93 e1 01 	sts	0x01E1, r22	; 0x8001e1 <Xg>
-     860:	70 93 e2 01 	sts	0x01E2, r23	; 0x8001e2 <Xg+0x1>
-     864:	80 93 e3 01 	sts	0x01E3, r24	; 0x8001e3 <Xg+0x2>
-     868:	90 93 e4 01 	sts	0x01E4, r25	; 0x8001e4 <Xg+0x3>
+     85c:	60 93 b7 01 	sts	0x01B7, r22	; 0x8001b7 <Xg>
+     860:	70 93 b8 01 	sts	0x01B8, r23	; 0x8001b8 <Xg+0x1>
+     864:	80 93 b9 01 	sts	0x01B9, r24	; 0x8001b9 <Xg+0x2>
+     868:	90 93 ba 01 	sts	0x01BA, r25	; 0x8001ba <Xg+0x3>
 			Yg = Yg - GyroErrorY;
-     86c:	20 91 d1 01 	lds	r18, 0x01D1	; 0x8001d1 <GyroErrorY>
-     870:	30 91 d2 01 	lds	r19, 0x01D2	; 0x8001d2 <GyroErrorY+0x1>
-     874:	40 91 d3 01 	lds	r20, 0x01D3	; 0x8001d3 <GyroErrorY+0x2>
-     878:	50 91 d4 01 	lds	r21, 0x01D4	; 0x8001d4 <GyroErrorY+0x3>
-     87c:	60 91 dd 01 	lds	r22, 0x01DD	; 0x8001dd <Yg>
-     880:	70 91 de 01 	lds	r23, 0x01DE	; 0x8001de <Yg+0x1>
-     884:	80 91 df 01 	lds	r24, 0x01DF	; 0x8001df <Yg+0x2>
-     888:	90 91 e0 01 	lds	r25, 0x01E0	; 0x8001e0 <Yg+0x3>
+     86c:	20 91 a7 01 	lds	r18, 0x01A7	; 0x8001a7 <GyroErrorY>
+     870:	30 91 a8 01 	lds	r19, 0x01A8	; 0x8001a8 <GyroErrorY+0x1>
+     874:	40 91 a9 01 	lds	r20, 0x01A9	; 0x8001a9 <GyroErrorY+0x2>
+     878:	50 91 aa 01 	lds	r21, 0x01AA	; 0x8001aa <GyroErrorY+0x3>
+     87c:	60 91 b3 01 	lds	r22, 0x01B3	; 0x8001b3 <Yg>
+     880:	70 91 b4 01 	lds	r23, 0x01B4	; 0x8001b4 <Yg+0x1>
+     884:	80 91 b5 01 	lds	r24, 0x01B5	; 0x8001b5 <Yg+0x2>
+     888:	90 91 b6 01 	lds	r25, 0x01B6	; 0x8001b6 <Yg+0x3>
      88c:	0e 94 57 05 	call	0xaae	; 0xaae <__subsf3>
-     890:	60 93 dd 01 	sts	0x01DD, r22	; 0x8001dd <Yg>
-     894:	70 93 de 01 	sts	0x01DE, r23	; 0x8001de <Yg+0x1>
-     898:	80 93 df 01 	sts	0x01DF, r24	; 0x8001df <Yg+0x2>
-     89c:	90 93 e0 01 	sts	0x01E0, r25	; 0x8001e0 <Yg+0x3>
+     890:	60 93 b3 01 	sts	0x01B3, r22	; 0x8001b3 <Yg>
+     894:	70 93 b4 01 	sts	0x01B4, r23	; 0x8001b4 <Yg+0x1>
+     898:	80 93 b5 01 	sts	0x01B5, r24	; 0x8001b5 <Yg+0x2>
+     89c:	90 93 b6 01 	sts	0x01B6, r25	; 0x8001b6 <Yg+0x3>
 			Zg = Zg - GyroErrorZ;
-     8a0:	20 91 cd 01 	lds	r18, 0x01CD	; 0x8001cd <GyroErrorZ>
-     8a4:	30 91 ce 01 	lds	r19, 0x01CE	; 0x8001ce <GyroErrorZ+0x1>
-     8a8:	40 91 cf 01 	lds	r20, 0x01CF	; 0x8001cf <GyroErrorZ+0x2>
-     8ac:	50 91 d0 01 	lds	r21, 0x01D0	; 0x8001d0 <GyroErrorZ+0x3>
-     8b0:	60 91 d9 01 	lds	r22, 0x01D9	; 0x8001d9 <Zg>
-     8b4:	70 91 da 01 	lds	r23, 0x01DA	; 0x8001da <Zg+0x1>
-     8b8:	80 91 db 01 	lds	r24, 0x01DB	; 0x8001db <Zg+0x2>
-     8bc:	90 91 dc 01 	lds	r25, 0x01DC	; 0x8001dc <Zg+0x3>
+     8a0:	20 91 a3 01 	lds	r18, 0x01A3	; 0x8001a3 <GyroErrorZ>
+     8a4:	30 91 a4 01 	lds	r19, 0x01A4	; 0x8001a4 <GyroErrorZ+0x1>
+     8a8:	40 91 a5 01 	lds	r20, 0x01A5	; 0x8001a5 <GyroErrorZ+0x2>
+     8ac:	50 91 a6 01 	lds	r21, 0x01A6	; 0x8001a6 <GyroErrorZ+0x3>
+     8b0:	60 91 af 01 	lds	r22, 0x01AF	; 0x8001af <Zg>
+     8b4:	70 91 b0 01 	lds	r23, 0x01B0	; 0x8001b0 <Zg+0x1>
+     8b8:	80 91 b1 01 	lds	r24, 0x01B1	; 0x8001b1 <Zg+0x2>
+     8bc:	90 91 b2 01 	lds	r25, 0x01B2	; 0x8001b2 <Zg+0x3>
      8c0:	0e 94 57 05 	call	0xaae	; 0xaae <__subsf3>
      8c4:	4b 01       	movw	r8, r22
      8c6:	5c 01       	movw	r10, r24
-     8c8:	60 93 d9 01 	sts	0x01D9, r22	; 0x8001d9 <Zg>
-     8cc:	70 93 da 01 	sts	0x01DA, r23	; 0x8001da <Zg+0x1>
-     8d0:	80 93 db 01 	sts	0x01DB, r24	; 0x8001db <Zg+0x2>
-     8d4:	90 93 dc 01 	sts	0x01DC, r25	; 0x8001dc <Zg+0x3>
+     8c8:	60 93 af 01 	sts	0x01AF, r22	; 0x8001af <Zg>
+     8cc:	70 93 b0 01 	sts	0x01B0, r23	; 0x8001b0 <Zg+0x1>
+     8d0:	80 93 b1 01 	sts	0x01B1, r24	; 0x8001b1 <Zg+0x2>
+     8d4:	90 93 b2 01 	sts	0x01B2, r25	; 0x8001b2 <Zg+0x3>
 			// Currently the raw values are in degrees per seconds, deg/s, so we need to multiply by seconds (s) to get the angle in degrees
 			gyroAngleZ = gyroAngleZ + Zg * millis * 0.001;
      8d8:	6c 2f       	mov	r22, r28
@@ -1053,15 +1053,15 @@ int main (void)
      8f4:	43 e8       	ldi	r20, 0x83	; 131
      8f6:	5a e3       	ldi	r21, 0x3A	; 58
      8f8:	0e 94 65 07 	call	0xeca	; 0xeca <__mulsf3>
-     8fc:	20 91 c5 01 	lds	r18, 0x01C5	; 0x8001c5 <gyroAngleZ>
-     900:	30 91 c6 01 	lds	r19, 0x01C6	; 0x8001c6 <gyroAngleZ+0x1>
-     904:	40 91 c7 01 	lds	r20, 0x01C7	; 0x8001c7 <gyroAngleZ+0x2>
-     908:	50 91 c8 01 	lds	r21, 0x01C8	; 0x8001c8 <gyroAngleZ+0x3>
+     8fc:	20 91 9b 01 	lds	r18, 0x019B	; 0x80019b <gyroAngleZ>
+     900:	30 91 9c 01 	lds	r19, 0x019C	; 0x80019c <gyroAngleZ+0x1>
+     904:	40 91 9d 01 	lds	r20, 0x019D	; 0x80019d <gyroAngleZ+0x2>
+     908:	50 91 9e 01 	lds	r21, 0x019E	; 0x80019e <gyroAngleZ+0x3>
      90c:	0e 94 58 05 	call	0xab0	; 0xab0 <__addsf3>
-     910:	60 93 c5 01 	sts	0x01C5, r22	; 0x8001c5 <gyroAngleZ>
-     914:	70 93 c6 01 	sts	0x01C6, r23	; 0x8001c6 <gyroAngleZ+0x1>
-     918:	80 93 c7 01 	sts	0x01C7, r24	; 0x8001c7 <gyroAngleZ+0x2>
-     91c:	90 93 c8 01 	sts	0x01C8, r25	; 0x8001c8 <gyroAngleZ+0x3>
+     910:	60 93 9b 01 	sts	0x019B, r22	; 0x80019b <gyroAngleZ>
+     914:	70 93 9c 01 	sts	0x019C, r23	; 0x80019c <gyroAngleZ+0x1>
+     918:	80 93 9d 01 	sts	0x019D, r24	; 0x80019d <gyroAngleZ+0x2>
+     91c:	90 93 9e 01 	sts	0x019E, r25	; 0x80019e <gyroAngleZ+0x3>
 			// Complementary filter - combine accelerometer and gyro angle values
 			yaw =  0.98 * gyroAngleZ + 0.02 * accAngle;
      920:	28 e4       	ldi	r18, 0x48	; 72
@@ -1083,153 +1083,94 @@ int main (void)
      944:	c5 01       	movw	r24, r10
      946:	b4 01       	movw	r22, r8
      948:	0e 94 58 05 	call	0xab0	; 0xab0 <__addsf3>
-     94c:	60 93 c1 01 	sts	0x01C1, r22	; 0x8001c1 <yaw>
-     950:	70 93 c2 01 	sts	0x01C2, r23	; 0x8001c2 <yaw+0x1>
-     954:	80 93 c3 01 	sts	0x01C3, r24	; 0x8001c3 <yaw+0x2>
-     958:	90 93 c4 01 	sts	0x01C4, r25	; 0x8001c4 <yaw+0x3>
+     94c:	60 93 97 01 	sts	0x0197, r22	; 0x800197 <yaw>
+     950:	70 93 98 01 	sts	0x0198, r23	; 0x800198 <yaw+0x1>
+     954:	80 93 99 01 	sts	0x0199, r24	; 0x800199 <yaw+0x2>
+     958:	90 93 9a 01 	sts	0x019A, r25	; 0x80019a <yaw+0x3>
 			
 			//PrintAngles();
 			PrintRawValues();		
      95c:	0e 94 ee 02 	call	0x5dc	; 0x5dc <PrintRawValues>
+			//PrintAccAngles();
+			//PrintGyroAngleZ();
 			
-			//imu_filter(Xa, Ya, Za, Xg, Yg, Zg);
-			//eulerAngles(q_est, &roll, &pitch, &yaw);
-			//PrintRollPitchYaw();
-
 			millis = 0;
-     960:	10 92 c0 01 	sts	0x01C0, r1	; 0x8001c0 <__data_end>
+     960:	10 92 96 01 	sts	0x0196, r1	; 0x800196 <__data_end>
      964:	41 cf       	rjmp	.-382    	; 0x7e8 <main+0x28>
 
 00000966 <I2cStart>:
-﻿#include <I2C.h>
-
-void I2cStart(void) //СТАРТ состояние
-{
-	TWCR = (1<<TWINT) | (1<<TWSTA) | (1<<TWEN);
      966:	84 ea       	ldi	r24, 0xA4	; 164
      968:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
-	while(!(TWCR & (1<<TWINT)));
      96c:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
      970:	88 23       	and	r24, r24
      972:	e4 f7       	brge	.-8      	; 0x96c <I2cStart+0x6>
-}
      974:	08 95       	ret
 
 00000976 <I2cStop>:
-
-void I2cStop(void) //СТОП состояние
-{
-	TWCR = (1<<TWINT) | (1<<TWSTO) | (1<<TWEN);
      976:	84 e9       	ldi	r24, 0x94	; 148
      978:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
      97c:	08 95       	ret
 
 0000097e <I2cSendByte>:
-}
-
-void I2cSendByte(uint8_t data) //посылка байта с МК
-{
-	TWDR = data;
      97e:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7f80bb>
-	TWCR = (1<<TWINT) | (1<<TWEN);
      982:	84 e8       	ldi	r24, 0x84	; 132
      984:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
-	while(!(TWCR & (1<<TWINT)));
      988:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
      98c:	88 23       	and	r24, r24
      98e:	e4 f7       	brge	.-8      	; 0x988 <I2cSendByte+0xa>
-}
      990:	08 95       	ret
 
 00000992 <I2cGetByte>:
-
-uint8_t I2cGetByte(uint8_t is_last_byte) //приём байта МК-ом
-{
-	if(is_last_byte)
      992:	88 23       	and	r24, r24
      994:	21 f0       	breq	.+8      	; 0x99e <I2cGetByte+0xc>
-	TWCR = (1<<TWINT) | (1<<TWEN);// NACK
      996:	84 e8       	ldi	r24, 0x84	; 132
      998:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
      99c:	03 c0       	rjmp	.+6      	; 0x9a4 <I2cGetByte+0x12>
-	else
-	TWCR = (1<<TWINT) | (1<<TWEN) | (1<<TWEA);// ACK
      99e:	84 ec       	ldi	r24, 0xC4	; 196
      9a0:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
-	while(!(TWCR & (1<<TWINT)));
      9a4:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
      9a8:	88 23       	and	r24, r24
      9aa:	e4 f7       	brge	.-8      	; 0x9a4 <I2cGetByte+0x12>
-	return(TWDR);
      9ac:	80 91 bb 00 	lds	r24, 0x00BB	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7f80bb>
-}
      9b0:	08 95       	ret
 
 000009b2 <TransmitDataToGy86>:
-﻿#include "mpu6050.h"
-
-void TransmitDataToGy86(uint8_t reg_addr, uint8_t data)
-{
      9b2:	cf 93       	push	r28
      9b4:	df 93       	push	r29
      9b6:	d8 2f       	mov	r29, r24
      9b8:	c6 2f       	mov	r28, r22
-	I2cStart();
      9ba:	0e 94 b3 04 	call	0x966	; 0x966 <I2cStart>
-	I2cSendByte((SENS_ADDR<<1) | WRITE);
      9be:	80 ed       	ldi	r24, 0xD0	; 208
      9c0:	0e 94 bf 04 	call	0x97e	; 0x97e <I2cSendByte>
-	I2cSendByte(reg_addr);
      9c4:	8d 2f       	mov	r24, r29
      9c6:	0e 94 bf 04 	call	0x97e	; 0x97e <I2cSendByte>
-	I2cSendByte(data);
      9ca:	8c 2f       	mov	r24, r28
      9cc:	0e 94 bf 04 	call	0x97e	; 0x97e <I2cSendByte>
-	I2cStop();
      9d0:	0e 94 bb 04 	call	0x976	; 0x976 <I2cStop>
-}
      9d4:	df 91       	pop	r29
      9d6:	cf 91       	pop	r28
      9d8:	08 95       	ret
 
 000009da <RecieveDataFromGy86>:
-
-//функция приёма байта по протоколу i2c
-uint8_t RecieveDataFromGy86(uint8_t reg_addr)
-{
      9da:	cf 93       	push	r28
      9dc:	c8 2f       	mov	r28, r24
-	uint8_t res;
-	I2cStart();
      9de:	0e 94 b3 04 	call	0x966	; 0x966 <I2cStart>
-	I2cSendByte((SENS_ADDR<<1) | WRITE);
      9e2:	80 ed       	ldi	r24, 0xD0	; 208
      9e4:	0e 94 bf 04 	call	0x97e	; 0x97e <I2cSendByte>
-	I2cSendByte(reg_addr);
      9e8:	8c 2f       	mov	r24, r28
      9ea:	0e 94 bf 04 	call	0x97e	; 0x97e <I2cSendByte>
-	I2cStart();
      9ee:	0e 94 b3 04 	call	0x966	; 0x966 <I2cStart>
-	I2cSendByte((SENS_ADDR<<1) | READ);
      9f2:	81 ed       	ldi	r24, 0xD1	; 209
      9f4:	0e 94 bf 04 	call	0x97e	; 0x97e <I2cSendByte>
-	res = I2cGetByte(LAST_BYTE);
      9f8:	81 e0       	ldi	r24, 0x01	; 1
      9fa:	0e 94 c9 04 	call	0x992	; 0x992 <I2cGetByte>
      9fe:	c8 2f       	mov	r28, r24
-	I2cStop();
      a00:	0e 94 bb 04 	call	0x976	; 0x976 <I2cStop>
-	return res;
-}
      a04:	8c 2f       	mov	r24, r28
      a06:	cf 91       	pop	r28
      a08:	08 95       	ret
 
 00000a0a <Gy86Init>:
- 
-void Gy86Init(void)
-{
-	TWBR = 0x48; //TWBR = (F_CPU/2*SCLfreq)-8=72, SCLfreq=100KHz
      a0a:	88 e4       	ldi	r24, 0x48	; 72
      a0c:	80 93 b8 00 	sts	0x00B8, r24	; 0x8000b8 <__TEXT_REGION_LENGTH__+0x7f80b8>
      a10:	08 95       	ret
@@ -1244,82 +1185,50 @@ void Gy86Init(void)
      a1e:	e1 f7       	brne	.-8      	; 0xa18 <GyroInit+0x6>
      a20:	00 c0       	rjmp	.+0      	; 0xa22 <GyroInit+0x10>
      a22:	00 00       	nop
-}
- 
-void GyroInit(void)
-{
-	_delay_ms(150);
-	TransmitDataToGy86(SMPLRT_DIV, 0x07);//делитель частоты дискретизации = 8 /* 1KHz sample rate */
      a24:	67 e0       	ldi	r22, 0x07	; 7
      a26:	89 e1       	ldi	r24, 0x19	; 25
      a28:	0e 94 d9 04 	call	0x9b2	; 0x9b2 <TransmitDataToGy86>
-	TransmitDataToGy86(CONFIG, 0x00);// Fs = 8KHz
      a2c:	60 e0       	ldi	r22, 0x00	; 0
      a2e:	8a e1       	ldi	r24, 0x1A	; 26
      a30:	0e 94 d9 04 	call	0x9b2	; 0x9b2 <TransmitDataToGy86>
-	TransmitDataToGy86(GYRO_CONFIG, 0x18);// Full scale range +/- 2000 degree/C
      a34:	68 e1       	ldi	r22, 0x18	; 24
      a36:	8b e1       	ldi	r24, 0x1B	; 27
      a38:	0e 94 d9 04 	call	0x9b2	; 0x9b2 <TransmitDataToGy86>
-	TransmitDataToGy86(ACCEL_CONFIG, 0x00);// Full scale range +/- 2g
      a3c:	60 e0       	ldi	r22, 0x00	; 0
      a3e:	8c e1       	ldi	r24, 0x1C	; 28
      a40:	0e 94 d9 04 	call	0x9b2	; 0x9b2 <TransmitDataToGy86>
-	TransmitDataToGy86(PWR_MGMT_1, 0x01); //configured one of the gyroscopes as the clock reference for improved stability
      a44:	61 e0       	ldi	r22, 0x01	; 1
      a46:	8b e6       	ldi	r24, 0x6B	; 107
      a48:	0e 94 d9 04 	call	0x9b2	; 0x9b2 <TransmitDataToGy86>
      a4c:	08 95       	ret
 
 00000a4e <UartSendChar>:
-}
-
-void UartSendChar(uint8_t byte)
-{
-	// ожидаем выставления бита UDRE0, а затем кладем посылку в UDR0
-	while(!(UCSR0A & (1<<UDRE0)));
      a4e:	90 91 c0 00 	lds	r25, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7f80c0>
      a52:	95 ff       	sbrs	r25, 5
      a54:	fc cf       	rjmp	.-8      	; 0xa4e <UartSendChar>
-	UDR0 = byte;
      a56:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7f80c6>
      a5a:	08 95       	ret
 
 00000a5c <UartSendString>:
-}
-
-void UartSendString(char* index)
-{
      a5c:	cf 93       	push	r28
      a5e:	df 93       	push	r29
      a60:	ec 01       	movw	r28, r24
-	while(*index) UartSendChar(*index++);
      a62:	03 c0       	rjmp	.+6      	; 0xa6a <UartSendString+0xe>
      a64:	21 96       	adiw	r28, 0x01	; 1
      a66:	0e 94 27 05 	call	0xa4e	; 0xa4e <UartSendChar>
      a6a:	88 81       	ld	r24, Y
      a6c:	81 11       	cpse	r24, r1
      a6e:	fa cf       	rjmp	.-12     	; 0xa64 <UartSendString+0x8>
-}
      a70:	df 91       	pop	r29
      a72:	cf 91       	pop	r28
      a74:	08 95       	ret
 
 00000a76 <UartInit>:
-﻿#include "UART.h"
-
-void UartInit(void)
-{
-	//инициализируем UART на передачу данных, 8 бит данных, 1 стоп, без проверки четности
-	UCSR0B = (1 << TXEN0);
      a76:	88 e0       	ldi	r24, 0x08	; 8
      a78:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7f80c1>
-	UCSR0C = (1 << UCSZ01) | (1 << UCSZ00);
      a7c:	86 e0       	ldi	r24, 0x06	; 6
      a7e:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7f80c2>
-	UBRR0H = 0x00;
      a82:	10 92 c5 00 	sts	0x00C5, r1	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7f80c5>
-	UBRR0L = 0x67; //16000000/(16*9600)-1 = 103 = 0x67
      a86:	87 e6       	ldi	r24, 0x67	; 103
      a88:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7f80c4>
      a8c:	2f ef       	ldi	r18, 0xFF	; 255
@@ -1331,12 +1240,9 @@ void UartInit(void)
      a98:	e1 f7       	brne	.-8      	; 0xa92 <UartInit+0x1c>
      a9a:	00 c0       	rjmp	.+0      	; 0xa9c <UartInit+0x26>
      a9c:	00 00       	nop
-	_delay_ms(500);
-	UartSendString("UART OK");
-     a9e:	87 eb       	ldi	r24, 0xB7	; 183
+     a9e:	8d e8       	ldi	r24, 0x8D	; 141
      aa0:	91 e0       	ldi	r25, 0x01	; 1
      aa2:	0e 94 2e 05 	call	0xa5c	; 0xa5c <UartSendString>
-	UartSendChar('\n');
      aa6:	8a e0       	ldi	r24, 0x0A	; 10
      aa8:	0e 94 27 05 	call	0xa4e	; 0xa4e <UartSendChar>
      aac:	08 95       	ret
