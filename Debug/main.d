@@ -18,7 +18,7 @@ main.d main.o: .././main.c ../headers/mpu6050.h ../headers/I2C.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
- ../headers/UART.h ../headers/common.h ../headers/madgwickFilter.h
+ ../headers/UART.h ../headers/common.h
 
 ../headers/mpu6050.h:
 
@@ -65,5 +65,3 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 ../headers/UART.h:
 
 ../headers/common.h:
-
-../headers/madgwickFilter.h:

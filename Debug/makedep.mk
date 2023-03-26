@@ -6,8 +6,6 @@ main.c
 
 src\I2C.c
 
-src\madgwickFilter.c
-
 src\mpu6050.c
 
 src\UART.c

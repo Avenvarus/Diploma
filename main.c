@@ -1,6 +1,5 @@
 #include <mpu6050.h>
 #include <UART.h>
-#include <madgwickFilter.h>
 #define RAD_TO_DEG 57.295779
 #define G_LSB 16.4
 #define A_LSB 16384.0
@@ -21,44 +20,6 @@ float GyroErrorX = 0, GyroErrorY = 0, GyroErrorZ = 0; //gyroscope average values
 float accAngle = 0, gyroAngleX = 0, gyroAngleY = 0, gyroAngleZ = 0; // accelerometer and gyroscope angles in degrees
 float roll = 0.0, pitch = 0.0, yaw = 0.0;
 static uint8_t millis = 0;  
-	
-	
-	
-//int main(int argc, const char * argv[]) 
-//{
-	//UartInit();
-	//float roll = 0.0, pitch = 0.0, yaw = 0.0;
-//
-	//// flat upright position to resolve the graident descent problem
-	//UartSendString("\n\n Upright to solve gradient descent problem\n");
-	//for(float i = 0; i<100; i++){
-		//imu_filter(0.05, 0.05, 0.9, 0, 0, 0);
-		//eulerAngles(q_est, &roll, &pitch, &yaw);
-		////printf("Time (s): %.3f, roll: %f, pitch: %f, yaw: %f\n", i * DELTA_T, roll, pitch, yaw);
-		//PrintRollPitchYaw();
-	//}
-//
-	//// Angular Rotation around Z axis (yaw) at 100 degrees per second
-	//UartSendString("\n\nYAW 100 Degrees per Second\n");
-	//for(float i = 0; i<100; i++){
-		//imu_filter(0, 0, 1, 0, 0, -100 * PI / 180);
-		//eulerAngles(q_est, &roll, &pitch, &yaw);
-		////printf("Time (s): %.3f, roll: %f, pitch: %f, yaw: %f\n", i * DELTA_T, roll, pitch, yaw);
-		//PrintRollPitchYaw();
-	//}
-//
-	//// Angular Rotation around Z axis (yaw) at -20 degrees per second
-	//UartSendString("\n\nYAW -20 Degrees per Second\n");
-	//for(float i = 0; i<100; i++){
-		//imu_filter(0, 0, 1, 0, 0, 20 * PI / 180);
-		//eulerAngles(q_est, &roll, &pitch, &yaw);
-		////printf("Time (s): %.3f, roll: %f, pitch: %f, yaw: %f\n", i * DELTA_T, roll, pitch, yaw);
-		//PrintRollPitchYaw();
-	//}
-	//
-	//return 0;
-//}	
-		
 	
 	
 
@@ -94,10 +55,6 @@ int main (void)
 			//PrintAccAngles();
 			//PrintGyroAngleZ();
 			
-			//imu_filter(Xa, Ya, Za, Xg, Yg, Zg);
-			//eulerAngles(q_est, &roll, &pitch, &yaw);
-			//PrintRollPitchYaw();
-
 			millis = 0;
 			
 		}
@@ -219,25 +176,6 @@ void PrintGyroAngleZ(void)
 	char buffer[20], float_[10];
 	dtostrf( gyroAngleZ, 5, 3, float_ );
 	sprintf(buffer," GyroAngleZ = %s d\t",float_);
-	UartSendString(buffer);
-	
-	UartSendChar('\n');
-}
-
-void PrintRollPitchYaw(void)
-{
-	char buffer[20], float_[10];
-	/* Take values in buffer to send all parameters over USART */
-	dtostrf( roll, 3, 2, float_ );
-	sprintf(buffer," roll = %s g\t",float_);
-	UartSendString(buffer);
-	
-	dtostrf( pitch, 3, 2, float_ );
-	sprintf(buffer," pitch = %s g\t",float_);
-	UartSendString(buffer);
-	
-	dtostrf( yaw, 3, 2, float_ );
-	sprintf(buffer," yaw = %s g\t",float_);
 	UartSendString(buffer);
 	
 	UartSendChar('\n');

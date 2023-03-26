@@ -41,7 +41,6 @@ SUBDIRS :=  \
 C_SRCS +=  \
 ../main.c \
 ../src/I2C.c \
-../src/madgwickFilter.c \
 ../src/mpu6050.c \
 ../src/UART.c
 
@@ -55,28 +54,24 @@ ASM_SRCS +=
 OBJS +=  \
 main.o \
 src/I2C.o \
-src/madgwickFilter.o \
 src/mpu6050.o \
 src/UART.o
 
 OBJS_AS_ARGS +=  \
 main.o \
 src/I2C.o \
-src/madgwickFilter.o \
 src/mpu6050.o \
 src/UART.o
 
 C_DEPS +=  \
 main.d \
 src/I2C.d \
-src/madgwickFilter.d \
 src/mpu6050.d \
 src/UART.d
 
 C_DEPS_AS_ARGS +=  \
 main.d \
 src/I2C.d \
-src/madgwickFilter.d \
 src/mpu6050.d \
 src/UART.d
 
@@ -102,13 +97,6 @@ LINKER_SCRIPT_DEP+=
 	
 
 src/I2C.o: ../src/I2C.c
-	@echo Building file: $<
-	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../headers" -I"../src"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
-src/madgwickFilter.o: ../src/madgwickFilter.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../headers" -I"../src"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
